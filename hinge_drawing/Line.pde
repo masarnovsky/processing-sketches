@@ -13,7 +13,6 @@ class Line {
     theta = radians(random(0, 360));
     thetaDelta = random(-0.1, 0.1);
     radiusDelta = random(-0.1, 0.1);
-    radiusDelta = 0;
   }
   
   void update() {

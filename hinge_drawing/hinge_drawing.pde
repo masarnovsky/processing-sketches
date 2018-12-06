@@ -18,27 +18,48 @@ void mousePressed() {
   }
 }
 
+void takeScreenshot() {
+  background(255);
+  drawPoints();
+  save(random(0, 9999999) + "screenshot.png");
+}
+
+void startNew() {
+  points.clear();
+  lines.clear();
+}
+
+void keyPressed() {
+  if (key == 's') {
+    takeScreenshot();
+  } else if (key == 'r') {
+    startNew();
+  }
+}
+
+
 void draw() {
    background(255);
+   
    if (lines.size() >= 2) {
      Line line1 = lines.get(0);
      Line line2 = lines.get(1);
-     line1.update();
-     line1.draw();
-     line2.update();
-     line2.draw();
      
-     stroke(255,0,0, 30);
-     fill(255,0,0, 30);
-     line(line1.hinge.x, line1.hinge.y, line2.hinge.x, line2.hinge.y);
-     float centerX = (line1.hinge.x + line2.hinge.x)/2 ;
-     float centerY = (line1.hinge.y + line2.hinge.y)/2;
-     ellipse(centerX, centerY, 4,4);
-     points.add(new PVector(centerX, centerY));
-   
-     for (PVector p: points) {
-       //point(p.x, p.y);
-       ellipse(p.x, p.y, 2, 2);
-     }
+     line1.update();
+     line2.update();
+     
+     DrawingLine drawingLine = new DrawingLine(line1, line2);
+     points.add(drawingLine.getDrawPoint());
+     
+     line1.draw();
+     line2.draw();
+     drawingLine.draw();
+     drawPoints();
    }
+}
+
+void drawPoints() {
+  for (PVector p: points) {
+    ellipse(p.x, p.y, 2, 2);
+  }
 }
