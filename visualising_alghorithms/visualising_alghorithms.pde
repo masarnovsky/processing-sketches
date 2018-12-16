@@ -12,23 +12,17 @@ void setup() {
 
 void draw() {
   background(0);
-  stroke(255);
+  
   
   
   if (i < array.length) {
-    for (int j =0; j < array.length - i - 1; j ++) {
-      float a = array[j];
-      float b = array[j+1];
-      if (a > b) {
-        swap(array, j, j+1);
-      }
-    }
-    i++;
+    //bubbleSortFastVersion();
+    bubbleSortSlowVersion();
   } else {
-    println("finished");
     noLoop();
   }
   
+  stroke(255);
   for (int i = 0; i < array.length; i++) {
     line(i, height, i, height - array[i]);
   }
@@ -38,4 +32,29 @@ void swap(float[] arr, int i, int j) {
   float temp = arr[i];
   arr[i] = arr[j];
   arr[j] = temp;
+}
+
+void bubbleSortFastVersion() {
+  for (int j =0; j < array.length - i - 1; j ++) {
+      float a = array[j];
+      float b = array[j+1];
+      if (a > b) {
+        swap(array, j, j+1);
+      }
+    }
+    i++;
+}
+
+void bubbleSortSlowVersion() {
+  float a = array[j];
+  float b = array[j+1];
+  if (a > b) {
+    swap(array, j, j+1);
+  }
+  j++;
+  
+  if (j >= array.length - i - 1) {
+    j = 0;
+    i++;
+  }
 }
