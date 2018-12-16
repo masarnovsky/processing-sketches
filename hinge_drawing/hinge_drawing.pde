@@ -1,5 +1,4 @@
 // to add ability to create points by mouse (start and end point)
-// class for drawing line (set drawing point, color, opacity etc.)
 // create an UI (move by circle | or specific angle, etc)
 // ability to move for draw point
 
@@ -7,6 +6,7 @@
 
 ArrayList<PVector> points = new ArrayList();
 ArrayList<Line> lines = new ArrayList();
+Mode mode;
 
 void setup() {
   size(600,600);
@@ -53,6 +53,7 @@ void draw() {
      
      line1.draw();
      line2.draw();
+     
      drawingLine.draw();
      drawPoints();
    }

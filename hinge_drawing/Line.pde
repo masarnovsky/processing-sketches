@@ -6,11 +6,17 @@ class Line {
   float thetaDelta;
   float radiusDelta;
   
+  float angleStart;
+  float angleEnd;
+  
+  
   Line(PVector pivot) {
     this.pivot = pivot;
     this.hinge = new PVector();
     radius = random(10, 150);
-    theta = radians(random(0, 360));
+    angleStart = radians(random(0, 180));
+    angleEnd = radians(random(180, 360));
+    theta = angleStart;
     thetaDelta = random(-0.1, 0.1);
     radiusDelta = random(-0.1, 0.1);
   }
@@ -19,6 +25,9 @@ class Line {
     recalculateHinge();
     theta += thetaDelta;
     radius += radiusDelta;
+    if (theta > angleEnd || theta < angleStart) {
+      thetaDelta *= -1;
+    }
   }
   
   PVector getPivot() {
@@ -48,5 +57,9 @@ class Line {
     ellipse(pivot.x, pivot.y, 2, 2);
     ellipse(hinge.x, hinge.y, 2, 2);
     line(pivot.x, pivot.y, hinge.x, hinge.y);
+  }
+  
+  void drawText(float x, float y) {
+    //text("theta: " + theta + " thetaEnd: " + thetaEnd + " delta: " + thetaDelta, x, y);
   }
 }

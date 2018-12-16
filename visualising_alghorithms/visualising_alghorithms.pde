@@ -12,17 +12,14 @@ void setup() {
 
 void draw() {
   background(0);
-  
-  
-  
-  if (i < array.length) {
-    //bubbleSortFastVersion();
-    bubbleSortSlowVersion();
-  } else {
-    noLoop();
-  }
-  
   stroke(255);
+  
+  bubbleSort();
+  
+  drawLines();
+}
+
+void drawLines() {
   for (int i = 0; i < array.length; i++) {
     line(i, height, i, height - array[i]);
   }
@@ -32,6 +29,15 @@ void swap(float[] arr, int i, int j) {
   float temp = arr[i];
   arr[i] = arr[j];
   arr[j] = temp;
+}
+
+void bubbleSort() {
+  if (i < array.length) {
+    //bubbleSortFastVersion();
+    bubbleSortSlowVersion();
+  } else {
+    noLoop();
+  }
 }
 
 void bubbleSortFastVersion() {
