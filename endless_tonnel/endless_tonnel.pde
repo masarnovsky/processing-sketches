@@ -1,38 +1,45 @@
 final int SIZE = 600; 
 final int REDUCER = 10;
 
-SquareSet set = new SquareSet();
+ArrayList<SquareSet> squareSetList = new ArrayList();
 
 void setup() {
   size(600, 600);
   rectMode(CENTER);
-  
+}
+
+void mousePressed() {
+  squareSetList.add(new SquareSet());
 }
 
 void draw() {
   background(0);
   fill(0, 0);
-  stroke(255);
   
-  set.draw();
+  for (SquareSet set: squareSetList) {
+    set.draw();
+  }
 }
 
 class Square {
   private int side;
+  private float opacity;
   
-  Square(int size) {
+  Square(int size, float opacity) {
     this.side = size;
+    this.opacity = opacity;
   }
   
-  void reduce() {
+  void reduce() { //<>//
     this.side -= REDUCER; //<>//
   }
   
   void setInitial() {
      this.side = SIZE;  //<>//
-  } //<>//
+  }
   
   void draw() {
+    stroke(255, opacity);
     rect(mouseX, mouseY, this.side, this.side);
   }
   
@@ -42,27 +49,26 @@ class Square {
 }
 
 class SquareSet {
-  int listSize;
-  
+  int listSize = 10;
   ArrayList<Square> squares;
   
-  SquareSet() {
-     listSize = 30; //<>//
+  SquareSet() { //<>//
      squares = new ArrayList();
      int initSize = SIZE;
+     int opacity = 255;
      
      for (int i = 0; i < listSize; i++) {
-       squares.add(new Square(initSize));
+       squares.add(new Square(initSize, opacity));
        initSize += 40;
+       opacity -= 30;
      }
   }
   
   void draw() {
     for (Square s: squares) { //<>//
-      s.draw();
-      s.reduce();
-      if (!s.isFitted()) {
-        s.setInitial();
+     if (s.isFitted()) {
+        s.draw();
+        s.reduce();
       }
     }
   }
