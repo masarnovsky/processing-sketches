@@ -4,6 +4,7 @@ PImage img;
 
 // SORT BY:
 // basic sort +
+// output an original image and sorted
 // vertical sort
 // threeshold
 // by color
@@ -18,7 +19,9 @@ void setup() {
   loadPixels();
   img.loadPixels();
   
-  basicPixelSorting();
+  //basicPixelSorting();
+  
+  
   
   updatePixels();
 }
