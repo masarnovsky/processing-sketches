@@ -5,13 +5,11 @@ int h, w;
 int index = 0;
 
 // SORT BY:
-// sort by brughtness() | hue()
 // vertical sort
 // threesholdr
 // by color
 // remove some color from sorting
 // sort area in rectangle
-// implement merge sort
 // selected area for sorting
 
 void setup() {
@@ -22,11 +20,34 @@ void setup() {
   sorted = img.get();
   sorted.loadPixels();
   
-  quickSort(sorted.pixels, 0, sorted.pixels.length-1);
+  //quicksort(sorted.pixels, 0, sorted.pixels.length-1); // all image
+  
+  //for (int y = 0; y < sorted.height; y++) { // by each y pos
+  //  int pos = y * sorted.width;
+  //  quicksort(sorted.pixels, pos, pos + sorted.width-1);
+  //}
+  
+  int x1 = 50;
+  int x2 = 150;
+  
+  int y1 = 50;
+  int y2 = 150;
+  
+  for (int y = x1 + y1 * sorted.width; y < x2 + y2 * sorted.width; y++) {
+        int pos = y * 100;
+        quicksort(sorted.pixels, pos, pos + 100);
+    }
+  
+  
+  
+  
   sorted.updatePixels();
   image(sorted, 0, 0);
   image(img, sorted.width, 0);
   
+  stroke(0);
+  noFill();
+  rect(x1, y1, x2, y2);
   
 }
 
@@ -34,12 +55,12 @@ void draw() {
 
 }
 
-void quickSort(int arr[], int begin, int end) {
+void quicksort(int arr[], int begin, int end) {
     if (begin < end) {
         int partitionIndex = partition(arr, begin, end);
  
-        quickSort(arr, begin, partitionIndex-1);
-        quickSort(arr, partitionIndex+1, end);
+        quicksort(arr, begin, partitionIndex-1);
+        quicksort(arr, partitionIndex+1, end);
     }
 }
 
@@ -48,7 +69,7 @@ int partition(int arr[], int begin, int end) {
     int i = (begin-1);
  
     for (int j = begin; j < end; j++) {
-        if (hue(arr[j]) <= hue(pivot)) {
+        if (brightness(arr[j]) <= brightness(pivot)) {
             i++;
  
             int swapTemp = arr[i];
@@ -63,6 +84,7 @@ int partition(int arr[], int begin, int end) {
  
     return i+1;
 }
+
 
 void sortAnimation() {
   float record = -1;

@@ -7,7 +7,9 @@ int source2Width = 816;
 int source2Height = 1045;
 
 PImage img;
-int pointilize = 16;
+boolean toggled = false;
+int defaulfSize = 16;
+int pointilize = defaulfSize;
 int h, w;
 
 void setup() {
@@ -33,4 +35,20 @@ void draw() {
   
   fill(r, g, b, 100);
   ellipse(x, y, pointilize, pointilize);
+}
+
+void keyPressed() {
+  if (key == 'c') { // change size to random
+    if (toggled) {
+      pointilize = defaulfSize;
+      toggled = false;
+    } else {
+      pointilize = (int) random(4, 30);
+      toggled = true;
+    }   
+  }
+  
+  if (key == 'e') {
+    background(0);
+  }
 }
