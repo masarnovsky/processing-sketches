@@ -17,11 +17,7 @@ void setup() {
   rand3 = random(rand);
 }
 void draw() {
-  float t = (float) frameCount;
-  translate(width/2, height/2);
-  rotate(t/200);
-  line(sin(t/140)*200+cos(t/30)*30, cos(t/140)*200 + sin(t/30)*30,
-      atan(t/140)*200+sin(t/30)*39, cos(t/140)*200+cos(t/30)*30);
+  basic();
 }
 
 void experiment1() {
@@ -48,6 +44,14 @@ void experiment4() {
   translate(width/2, height/2);
   rotate(rand1);
   ellipse(sin(t/140)*200, cos(t/140)*200, sin(t/rand2)*200,cos(t/rand3)*200);
+}
+
+void experiment5() {
+  float t = (float) frameCount;
+  translate(width/2, height/2);
+  rotate(t/200);
+  line(sin(t/140)*200+cos(t/30)*30, cos(t/140)*200 + sin(t/30)*30,
+      atan(t/140)*200+sin(t/30)*39, cos(t/140)*200+cos(t/30)*30);
 }
 
 void MmeansMAX() {
