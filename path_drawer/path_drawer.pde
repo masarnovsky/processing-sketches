@@ -12,7 +12,7 @@ void mousePressed() {
 
 void draw() {
   background(255);
-  
+
   if (list.size() > 0) {
     for (int i = 0; i < list.size(); i++) {
       PVector pv = list.get(i);

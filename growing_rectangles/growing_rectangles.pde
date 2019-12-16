@@ -5,7 +5,7 @@ void setup() {
 }
 
 void mousePressed() {
- list.add(new Square()); 
+ list.add(new Square());
 }
 
 void draw() {
@@ -33,21 +33,18 @@ class Square {
   float transparency;
   float x, y, h, w, lineWeight, initLineWeight;
   color c;
-  
+
   float inc = 0.7;
   int minLineWeight = 25;
-  
-  
+
+
   Square() {
     h = random(300, 500);
     w = random(300, 500);
-    
+
     x = mouseX;
     y = mouseY;
-    
-    println(x);
-    println(y);
-    
+
     initLineWeight = random(minLineWeight, 90);
     lineWeight = initLineWeight;
     c = color(random(255), random(255), random(255), random(30, 200));
@@ -56,19 +53,19 @@ class Square {
     shape.setStrokeWeight(initLineWeight);
     shape.setFill(0);
   }
-  
+
   void updateShape() {
      lineWeight += inc;
-     
+
      if ((lineWeight > initLineWeight * 2) || (lineWeight < initLineWeight / 2) || (lineWeight < 5)) {
        inc *= -1;
      }
-     
+
      shape.setStrokeWeight(lineWeight);
   }
-  
+
   void draw() {
    updateShape();
-   shape(shape); 
+   shape(shape);
   }
 }

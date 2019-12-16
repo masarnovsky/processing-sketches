@@ -15,7 +15,7 @@ void draw() {
   stroke(255);
   
   bubbleSort();
-  
+
   drawLines();
 }
 
@@ -58,7 +58,7 @@ void bubbleSortSlowVersion() {
     swap(array, j, j+1);
   }
   j++;
-  
+
   if (j >= array.length - i - 1) {
     j = 0;
     i++;

@@ -30,28 +30,26 @@ class Ball {
   float y;
   float speed;
   float w;
-  
+
   Ball(int tX, int tY, float tSpeed, float tW) {
     x = tX;
     y = tY;
     speed = tSpeed;
     w = tW;
   }
-  
+
   void gravity() {
     speed = speed + gravity;
   }
-  
+
   void move() {
     y = y + speed;
-    println("y: " + y);
-    println("speed: " + speed);
     if (y > height) {
       speed = speed * -0.95;
       y = height;
     }
   }
-  
+
   void display() {
     fill(255);
     noStroke();

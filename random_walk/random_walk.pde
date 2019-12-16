@@ -17,17 +17,17 @@ void draw() {
     newXLocation = 0;
   if (newXLocation > winSize)
     newXLocation = winSize;
-    
+
   if (newYLocation < 0)
     newYLocation = 0;
   if (newYLocation > winSize)
     newYLocation = winSize;
-    
+
   line(xLocation, yLocation, newXLocation, newYLocation);
   fill(random(255), random(255), random(255), 50);
   float circleSize = random (3, 50);
   ellipse(newXLocation, newYLocation, circleSize, circleSize);
-    
+
   xLocation = newXLocation;
   yLocation = newYLocation;
 }

@@ -10,9 +10,9 @@ void draw() {
   float g = random(255);
   float b = random(255);
   float t = random(255);
-  
+
   float rad = random(25);
-  
+
   float x = random(width);
   float y = random(height);
   

@@ -2,6 +2,8 @@
 // create an UI (move by circle | or specific angle, etc)
 // ability to move for draw point
 
+// todo: use sin() and cos()
+
 //==============================================
 
 ArrayList<PVector> points = new ArrayList();
@@ -40,20 +42,20 @@ void keyPressed() {
 
 void draw() {
    background(255);
-   
+
    if (lines.size() >= 2) {
      Line line1 = lines.get(0);
      Line line2 = lines.get(1);
-     
+
      line1.update();
      line2.update();
-     
+
      DrawingLine drawingLine = new DrawingLine(line1, line2);
      points.add(drawingLine.getDrawPoint());
-     
+
      line1.draw();
      line2.draw();
-     
+
      drawingLine.draw();
      drawPoints();
    }

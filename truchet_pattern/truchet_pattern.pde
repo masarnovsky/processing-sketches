@@ -8,7 +8,7 @@ void setup() {
   tiles[1] = loadImage("tile2.png");
   tiles[2]= loadImage("tile3.png");
   tiles[3] = loadImage("tile4.png");
-  
+
   noLoop();
 }
 
@@ -19,7 +19,7 @@ void draw() {
 void keyPressed() {
  if (key == 'r') {
    redraw();
- } 
+ }
 }
 
 void drawNewPattern() {

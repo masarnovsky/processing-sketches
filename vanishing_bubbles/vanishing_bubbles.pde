@@ -29,23 +29,23 @@ class Ball {
   int g = (int)random(255);
   int b = (int)random(255);
   boolean deleted = false;
-  
+
   Ball() {
     location = new PVector(mouseX, mouseY);
     velocity = new PVector(random(-10,10), random(-10,10));
     d = (int) random(16, 40);
   }
-  
+
   void update() {
     location.add(velocity);
     if (location.x > width || location.x < 0 || location.y > height || location.y < 0) {
       velocity.mult(-1);
     }
     transparency -= 3;
-    if (transparency < 0) 
+    if (transparency < 0)
       deleted = true;
   }
-  
+
   void draw() {
     fill(r,g,b,transparency);
     ellipse(location.x, location.y, d, d);

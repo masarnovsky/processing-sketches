@@ -13,7 +13,7 @@ void draw() {
   fill(255);
   noStroke();
   ellipse(mouseX, mouseY, 60,60);
-  
+
   pg.beginDraw();
   pg.background(233, 209, 109);
   pg.noFill();
@@ -21,7 +21,7 @@ void draw() {
   pg.ellipse(mouseX-50, mouseY-50, 60, 60);
   pg.endDraw();
   image(pg, 50,50);
-  
+
   pg2.beginDraw();
   pg2.background(0,255,0);
   pg2.fill(255,0,0,50);

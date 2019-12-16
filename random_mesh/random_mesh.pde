@@ -21,7 +21,7 @@ void drawAllLinesWithPsychodelicRandomColors() {
     Point p1 = points.get(i);
     for (int j = 0; j < points.size(); j++) {
       Point p2 = points.get(j);
-      
+
       stroke(random(255), random(255), random(255));
       line(p1.getX(), p1.getY(), p2.getX(), p2.getY());
     }
@@ -43,22 +43,22 @@ void draw() {
 class Point {
   int x;
   int y;
-  
+
   public void draw() {
     stroke(0);
     fill(0);
     ellipse(x, y, 5, 5);
   }
-  
+
   Point(int x, int y) {
     this.x = x;
     this.y = y;
   }
-  
+
   public int getX() {
     return x;
   }
-  
+
   public int getY() {
     return y;
   }

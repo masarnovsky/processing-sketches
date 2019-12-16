@@ -1,6 +1,6 @@
      int hw = 666;
-     
-     
+
+
      void setup() {
        size(666, 666);
        background(0);
@@ -12,5 +12,3 @@
          line(0, b, hw, b);
        }
      }
-     
-     

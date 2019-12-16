@@ -5,7 +5,7 @@ void setup() {
   size(600, 600);
   noFill();
   background(200, 200, 200);
-  
+
   for (int i = 0; i < 20; i++) {
       strokeWeight(strokeWeight);
       ellipse(width/2, height/2, rad, rad);
