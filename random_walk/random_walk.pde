@@ -12,7 +12,7 @@ void setup() {
 void draw() {
   float newXLocation = xLocation + random(-50, 50);
   float newYLocation = yLocation + random(-50, 50);
-  
+
   if (newXLocation < 0)
     newXLocation = 0;
   if (newXLocation > winSize)

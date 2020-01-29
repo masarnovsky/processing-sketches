@@ -24,9 +24,14 @@ public class Particle {
     acc.add(force);
   }
 
-  void show() {
-    stroke(c);
-    strokeWeight(5);
+  void show(boolean blacked) {
+    if (blacked) {
+      fill(1);
+      stroke(0);
+      strokeWeight(1);
+      } else { stroke(c); }
+    // stroke(c);
+    strokeWeight(3);
     point(pos.x, pos.y);
   }
 
