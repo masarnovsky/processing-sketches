@@ -1,4 +1,6 @@
 int h,s,b,a;
+int r = 15;
+int mX = -1, mY = -1;
 
 void setup() {
   size(600,600);
@@ -13,5 +15,23 @@ void draw() {
   b = int(map(mouseY, 0, height, 0, 100));
   a = 100;
   fill(h, s, b, a);
-  ellipse(mouseX,mouseY,15,15);
+  ellipse(mouseX,mouseY,r,r);
+  changeRadius();
+  mX = mouseX;
+  mY = mouseY;
+}
+
+void changeRadius() {
+  if (mX != -1 || mY != -1) {
+    int x = abs(mouseX - mX);
+    int y = abs(mouseY - mY);
+    int max = max(x, y);
+    r = int(map(max, 0, 300, 3, 40));
+  }
+}
+
+void keyPressed() {
+  if (key == 's') {
+    saveFrame("colored_circle-######.png");
+  }
 }
