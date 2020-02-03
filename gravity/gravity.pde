@@ -24,6 +24,12 @@ void draw() {
   }
 }
 
+void keyPressed() {
+  if (key == 's') {
+    saveFrame("gravity-######.png");
+  }
+}
+
 
 class Ball {
   float x;

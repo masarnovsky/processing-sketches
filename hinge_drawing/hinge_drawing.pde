@@ -33,7 +33,7 @@ void startNew() {
 
 void keyPressed() {
   if (key == 's') {
-    takeScreenshot();
+    saveFrame("hinge-######.png");
   } else if (key == 'r') {
     startNew();
   }

@@ -51,4 +51,8 @@ void keyPressed() {
   if (key == 'e') {
     background(0);
   }
+
+  if (key == 's') {
+    saveFrame("pointilize-######.png");
+  }
 }

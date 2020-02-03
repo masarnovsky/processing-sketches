@@ -20,6 +20,10 @@ void keyPressed() {
  if (key == 'r') {
    redraw();
  }
+
+ if (key == 's') {
+   saveFrame("truchet-######.png");
+ }
 }
 
 void drawNewPattern() {

@@ -73,3 +73,9 @@ class SquareSet {
     }
   }
 }
+
+void keyPressed() {
+  if (key == 's') {
+    saveFrame("tonnel-######.png");
+  }
+}

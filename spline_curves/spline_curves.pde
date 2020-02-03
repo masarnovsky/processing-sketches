@@ -40,3 +40,9 @@ void mousePressed() {
   y[count] = mouseY;
   count++;
 }
+
+void keyPressed() {
+  if (key == 's') {
+    saveFrame("splines-######.png");
+  }
+}

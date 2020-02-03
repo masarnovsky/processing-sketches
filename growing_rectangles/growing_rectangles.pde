@@ -15,6 +15,12 @@ void draw() {
   }
 }
 
+void keyPressed() {
+  if (key == 's') {
+    saveFrame("groving_rectangles-######.png");
+  }
+}
+
 void setGradient() {
   noFill();
   color white = color(255);

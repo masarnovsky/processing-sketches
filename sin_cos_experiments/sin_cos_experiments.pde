@@ -11,7 +11,7 @@ void setup() {
   background(0);
   noFill();
   stroke(255, 40);
-  
+
   rand1 = random(rand);
   rand2 = random(rand);
   rand3 = random(rand);
@@ -67,7 +67,7 @@ void mango() {
 }
 
 void keyPressed() {
- 
+
  if (key == 's') {
    pushMatrix();
    translate(0, 0);
@@ -76,10 +76,10 @@ void keyPressed() {
    saveFrame("experiments" + "rand1-" + rand1 + "_rand2-" + rand2 + "_rand3_" + rand3 +"-######.png");
    popMatrix();
  }
- 
+
  if (key == 'n') {
    background(0);
-  
+
    rand1 = random(rand);
    rand2 = random(rand);
    rand3 = random(rand);
@@ -90,12 +90,12 @@ void basic() {
   float x = width/2 + r * cos(radians(angle));
   float y = height/2 + r * sin(radians(angle));
   ellipse(x, y, 40, 40);
-  
+
   float x2 = width/2 + r2 * cos(radians(angle2));
   float y2 = height/2 + r2 * sin(radians(angle2));
-  
+
   ellipse(x2, y2, 40, 40);
-  
+
   angle += 10.3;
   angle2 -= 5.3;
   //r+= 0.3;

@@ -17,3 +17,9 @@ void setup() {
 }
 
 void draw() {}
+
+void keyPressed() {
+  if (key == 's') {
+    saveFrame("circle-######.png");
+  }
+}

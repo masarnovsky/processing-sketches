@@ -15,7 +15,13 @@ void draw() {
 
   float x = random(width);
   float y = random(height);
-  
+
   fill(r,g,b,t);
   ellipse(x, y, r, r);
+}
+
+void keyPressed() {
+  if (key == 's') {
+    saveFrame("random_generated_circles-######.png");
+  }
 }

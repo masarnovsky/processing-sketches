@@ -30,6 +30,9 @@ void clearFallenKeys() {
 }
 
 void keyPressed() {
+  if (key == 's') {
+    saveFrame("falling_letters-######.png");
+  }
   keys.add(new Key());
 }
 

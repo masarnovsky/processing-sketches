@@ -17,8 +17,6 @@ void draw() {
   noStroke();
   h = int(map(x, 0, width, 0, 360));
   s = int(map(y, 0, height, 0, 100));
-  println(y);
-  println(a);
   fill(h, s, 100, 100);
   ellipse(x,y,r,r);
   x++;
@@ -29,5 +27,11 @@ void checkXPosition() {
   if (x >= width) {
     x = 0;
     y+=delta;
+  }
+}
+
+void keyPressed() {
+  if (key == 's') {
+    saveFrame("colored_circle-######.png");
   }
 }

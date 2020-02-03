@@ -51,3 +51,9 @@ class Ball {
     ellipse(location.x, location.y, d, d);
   }
 }
+
+void keyPressed() {
+  if (key == 's') {
+    saveFrame("bubbles-######.png");
+  }
+}

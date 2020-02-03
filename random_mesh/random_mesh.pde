@@ -14,6 +14,10 @@ void keyPressed() {
   if (key == 'c') {
     points.clear();
   }
+
+  if (key == 's') {
+    saveFrame("random_mesh-######.png");
+  }
 }
 
 void drawAllLinesWithPsychodelicRandomColors() {

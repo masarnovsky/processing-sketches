@@ -11,7 +11,7 @@ void setup() {
   noStroke();
   smooth();
   background(0);
-  
+
   for (int i = 0; i < totalPetals; i++) {
      rotation += angle;
      radius *= 1.0049;
@@ -20,13 +20,12 @@ void setup() {
      p.y = height/2 + radius*(sin(radians(rotation)));
      p.rotation = radians(rotation);
      p.scaleVar += (i * 2) / totalPetals;
-     println(p.scaleVar);
      p.render();
   }
 }
 
 void draw() {
-   
+
 }
 
 class Petal {
@@ -34,11 +33,11 @@ class Petal {
   float y = 0.0;
   float rotation = 0.0;
   float scaleVar = 1.0;
-  
+
   color baseColor = color(0, 255, 255, 150);
   color detailColor = color(255, 255, 255, 160);
   color trimColor = color(0,0,0);
-  
+
   void render() {
     pushMatrix();
     translate(this.x, this.y);
@@ -50,7 +49,7 @@ class Petal {
     rotate(this.rotation);
     rect(-10, -1, 20, 1);
     //popMatrix();
-    
+
     popMatrix();
   }
 }
