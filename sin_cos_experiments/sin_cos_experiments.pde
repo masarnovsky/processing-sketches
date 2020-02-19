@@ -17,7 +17,8 @@ void setup() {
   rand3 = random(rand);
 }
 void draw() {
-  basic();
+  // basic();
+  experiment5();
 }
 
 void experiment1() {
