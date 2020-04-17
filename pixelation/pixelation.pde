@@ -1,20 +1,17 @@
-String source = "../sources/mona_2.jpg";
-int source1Width = 357;
-int source1Height = 500;
+String source = "../sources/mona_3.jpg";
 int d = 2;
 
 void setup() {
-  size(256, 256);
+  size(1600, 800);
   PImage mona = loadImage(source);
-
-  PImage pixelated = createImage(358, 500, RGB);
+  image(mona, 0, 0);
 
   mona.loadPixels();
-  for (int y = 0; y < height; y += d) {
-    for (int x = 0; x < width; x += d) {
-        int x1 = x + y * width;
+  for (int y = 0; y < mona.height; y += d) {
+    for (int x = 0; x < mona.width; x += d) {
+        int x1 = x + y * mona.width;
         int x2 = x1 + 1;
-        int x3 = x + ((y+1) * width);
+        int x3 = x + ((y+1) * mona.width);
         int x4 = x3 + 1;
 
           color c1 = mona.pixels[x1];
@@ -34,13 +31,9 @@ void setup() {
     }
   }
   mona.updatePixels();
-  image(mona, 0, 0);
+  image(mona, 800, 0);
 }
 
 float calculateAvg(float c1, float c2, float c3, float c4) {
     return (c1 + c2+c3+c4) / 4;
-}
-
-void draw() {
-  //
 }
