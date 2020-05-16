@@ -25,10 +25,17 @@ void setup() {
 }
 
 void experiment0(AnglePoint p) {
-  // rotate(p.a);
+  //template
+}
 
-  fill(p.c);
-  rect(p.X(), p.Y(), 3, 25);
+void loadingIcon(AnglePoint p) {
+  stroke(p.c);
+  strokeWeight(4);
+
+  PVector point = new PVector();
+  point.x = (r-30) * cos(p.a);
+  point.y = (r-30) * sin(p.a);
+  line(p.X(), p.Y(), point.x,  point.y);
 }
 
 void experiment4(AnglePoint p) {
@@ -58,6 +65,7 @@ void experiment3(AnglePoint p) {
 
 void draw() {
   translate(width/2, height/2);
+  rotate(3*PI/2);
   background(0);
 
   for (int i=0; i< size; i++) {
@@ -69,7 +77,7 @@ void draw() {
     point.x = r * cos(newA);
     point.y = r * sin(newA);
 
-    experiment3(p);
+    loadingIcon(p);
 
     // ellipse(p.X(), p.Y(), 20, 20);  // default
   }
