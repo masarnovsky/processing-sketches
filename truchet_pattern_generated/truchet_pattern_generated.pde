@@ -1,34 +1,27 @@
 int iSize = 100;
+color[] colors;
 
-
+// create UI
 void setup() {
-  size(600, 600);
+  size(800, 800);
+
+  colorMode(HSB, 360, 100, 100);
+  smooth();
+  rectMode(CENTER);
+
+  initColorPalette();
 
   noLoop();
 }
 
 void draw() {
-  background(255);
-  // fill(0);
-  smooth();
-  stroke(0);
-  rectMode(CENTER);
+  background(0);
   drawNewPattern();
 }
 
-void keyPressed() {
- if (key == 'r') {
-   redraw();
- }
-
- if (key == 's') {
-   saveFrame("truchet-generated-######.png");
- }
-}
-
 void drawNewPattern() {
-  for (int i = 0; i < 6; i++) {
-    for (int j = 0; j< 6; j++) {
+  for (int i = 0; i < width/iSize; i++) {
+    for (int j = 0; j< height/iSize; j++) {
       // drawTriangle(i*iSize, j*iSize);
       // drawArc(i*iSize, j*iSize);
       drawLines(i*iSize, j*iSize);
@@ -60,24 +53,135 @@ void drawArc(int x, int y) {
   }
 }
 
+// * if line have a sibling - they have similar stroke weight
 void drawLines(int x, int y) {
   int ind = (int) random(4);
+  int strokeWeight = getStrokeWeight();
+  color c = getColor();
+
+  boolean isDuplicated = defineDuplicates();
+
   switch(ind) {
     case 0:
-      line(x, y, x+50, y + 50);
-      line(x, y + 100, x + 50, y + 50);
+      drawLine1(x, y, isDuplicated, c, strokeWeight);
       break;
     case 1:
-      line(x+100, y, x+50, y + 50);
-      line(x+100, y + 100, x + 50, y + 50);
+      drawLine2(x, y, isDuplicated, c, strokeWeight);
       break;
     case 2:
-      line(x, y + 100, x+50, y + 50);
-      line(x+100, y + 100, x + 50, y + 50);
+      drawLine3(x, y, isDuplicated, c, strokeWeight);
       break;
     case 3:
-      line(x, y, x+50, y + 50);
-      line(x+100, y, x + 50, y + 50);
+      drawLine4(x, y, isDuplicated, c, strokeWeight);
       break;
     }
+}
+
+void drawLine1(int x, int y, boolean isDuplicated, color c, int strokeWeight) {
+  stroke(c);
+  strokeWeight(strokeWeight);
+
+  line(x, y, x+50, y + 50);
+  line(x, y + 100, x + 50, y + 50);
+
+  if (isDuplicated) {
+    stroke(getColor());
+    strokeWeight(getStrokeWeight());
+
+    line(x+50, y, x+100, y + 50);
+    line(x+50, y + 100, x + 100, y + 50);
+  }
+}
+
+void drawLine2(int x, int y, boolean isDuplicated, color c, int strokeWeight) {
+  stroke(c);
+  strokeWeight(strokeWeight);
+
+  line(x+100, y, x+50, y + 50);
+  line(x+100, y + 100, x + 50, y + 50);
+
+  if (isDuplicated) {
+    stroke(getColor());
+    strokeWeight(getStrokeWeight());
+
+    line(x+50, y, x, y + 50);
+    line(x+50, y + 100, x, y + 50);
+  }
+}
+
+void drawLine3(int x, int y, boolean isDuplicated, color c, int strokeWeight) {
+  stroke(c);
+  strokeWeight(strokeWeight);
+
+  line(x, y + 100, x+50, y + 50);
+  line(x+100, y + 100, x + 50, y + 50);
+
+  if (isDuplicated) {
+    stroke(getColor());
+    strokeWeight(getStrokeWeight());
+
+    line(x, y + 50, x+50, y);
+    line(x+100, y + 50, x + 50, y);
+  }
+}
+
+void drawLine4(int x, int y, boolean isDuplicated, color c, int strokeWeight) {
+  stroke(c);
+  strokeWeight(strokeWeight);
+
+  line(x, y, x+50, y + 50);
+  line(x+100, y, x + 50, y + 50);
+
+  if (isDuplicated) {
+    stroke(getColor());
+    strokeWeight(getStrokeWeight());
+
+    line(x, y + 50, x+50, y + 100);
+    line(x+100, y + 50, x + 50, y + 100);
+  }
+}
+
+
+//____________ utils methods
+
+void keyPressed() {
+ if (key == 'r') {
+   redraw();
+ }
+
+ if (key == 's') {
+   saveFrame("truchet-generated-######.png");
+ }
+}
+
+void initColorPalette() {
+  color c1 = color(214, 99, 37);
+  color c2 = color(197, 56, 59);
+  color c3 = color(68, 76, 58);
+  color c4 = color(41, 94, 100);
+  color c5 = color(358, 92, 99);
+
+  colors = new color[]{c1, c2, c3, c4, c5};
+}
+
+color getColor() {
+  return colors[(int) random(5)];
+}
+
+void setRandomColor() {
+  color c = getColor();
+  stroke(c);
+}
+
+int getStrokeWeight() {
+  return (int) random(2, 7);
+}
+
+void setRandomStrokeWeight() {
+  int weight = getStrokeWeight();
+  strokeWeight(weight);
+}
+
+boolean defineDuplicates() {
+  return ((int) random(2)) == 1;
 }
