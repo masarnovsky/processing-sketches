@@ -16,21 +16,21 @@ void setup() {
 
 void draw() {
   background(0);
-  drawNewPattern();
-}
 
-void drawNewPattern() {
   for (int i = 0; i < width/iSize; i++) {
     for (int j = 0; j< height/iSize; j++) {
       // drawTriangle(i*iSize, j*iSize);
-      // drawArc(i*iSize, j*iSize);
-      drawLines(i*iSize, j*iSize);
+      drawArc(i*iSize, j*iSize);
+      // drawLines(i*iSize, j*iSize);
     }
   }
 }
 
 void drawTriangle(int x, int y) {
   int ind = (int) random(4);
+  color c = getColor();
+  fill(c);
+  stroke(c);
   switch(ind) {
     case 0: triangle(x, y, x + 100, y + 100, x, y + 100); break;
     case 1: triangle(x + 100, y, x + 100, y + 100, x, y); break;
@@ -40,15 +40,21 @@ void drawTriangle(int x, int y) {
 }
 
 void drawArc(int x, int y) {
+  noFill();
   int ind = (int) random(2);
+
+  color c = getColor();
+  strokeWeight((int) random(1, 20));
+  stroke(c);
+
   switch(ind) {
     case 0:
       arc(x, y, 100, 100, 0, PI/2);
-      arc(x, y, 100, 100, PI, 3 * PI / 2);
+      arc(x + 100, y + 100, 100, 100, PI, 3 * PI / 2);
       break;
     case 1:
-      arc(x, y, 100, 100, PI, 0);
-      arc(x, y, 100, 100, PI/2, 3 * PI / 2);
+      arc(x+100, y, 100, 100, PI/2, PI);
+      arc(x, y + 100, 100, 100, 3 * PI / 2, TWO_PI);
       break;
   }
 }
