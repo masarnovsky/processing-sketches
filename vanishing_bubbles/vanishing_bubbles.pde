@@ -2,11 +2,12 @@ ArrayList<Ball> balls = new ArrayList();
 
 void setup() {
   size(500,500);
+  colorMode(HSB, 360, 100, 100);
   noStroke();
 }
 
 void draw() {
-  background(255);
+  background(360);
   if (mousePressed == true) {
     balls.add(new Ball());
   }
@@ -25,9 +26,10 @@ class Ball {
   PVector velocity;
   int d;
   int transparency = 255;
-  int r = (int)random(255);
-  int g = (int)random(255);
-  int b = (int)random(255);
+  int transparencyDelta = (int) random(1, 6);
+  int r = (int)random(360);
+  int g = (int)random(100);
+  int b = (int)random(100);
   boolean deleted = false;
 
   Ball() {
@@ -41,7 +43,7 @@ class Ball {
     if (location.x > width || location.x < 0 || location.y > height || location.y < 0) {
       velocity.mult(-1);
     }
-    transparency -= 3;
+    transparency -= transparencyDelta;
     if (transparency < 0)
       deleted = true;
   }

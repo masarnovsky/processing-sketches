@@ -2,7 +2,7 @@ float inc = 0.2;
 float scl = 15;
 float cols, rows;
 float zoff = 0;
-int particlesCount = 350;
+int particlesCount = 550;
 int colsXrows;
 boolean traced = false;
 boolean blacked = false;
@@ -11,7 +11,7 @@ Particle[] particles;
 PVector flowField[];
 
 void setup() {
-  size(400, 400);
+  size(500, 500);
   background(255);
   cols = floor(width / scl);
   rows = floor(height / scl);
