@@ -5,7 +5,7 @@ class Dot {
 
   float xoff = 0;
   float yoff = 100000;
-  float delta = 0.1;
+  float delta = 0.01;
   int mult;
 
   Dot(boolean isLinear) {
@@ -29,8 +29,10 @@ class Dot {
     if (isLinear) {
       location.add(velocity);
     } else {
-      location.x += noise(xoff) * mult;
-      location.y += noise(yoff) * mult;
+      // location.x += noise(xoff) * mult;
+      // location.y += noise(yoff) * mult;
+      location.x = map(noise(xoff), 0, 1, 0, width);
+      location.y = map(noise(yoff), 0, 1, 0, height);
       xoff += delta;
       yoff += delta;
     }
