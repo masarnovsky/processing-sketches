@@ -13,7 +13,7 @@ void setup(){
   stroke(337, 91, 81);
 
   for (int i = 0; i < size; i++) {
-    dots[i] = new Dot();
+    dots[i] = new Dot(false);
   }
 }
 
@@ -32,7 +32,7 @@ void draw() {
 }
 
 void checkDistanceAndDrawLine(Dot d1, Dot d2) {
-  if (dist(d1.location.x, d1.location.y, d2.location.x, d2.location.y) < dist) {
+  if (PVector.dist(d1.location, d2.location) < dist) {
     line(d1.location.x, d1.location.y, d2.location.x, d2.location.y);
   }
 }
