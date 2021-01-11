@@ -24,8 +24,6 @@ void setup() {
     }
   }
 
-  println(sum);
-
   noLoop();
 }
 
