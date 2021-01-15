@@ -11,13 +11,13 @@ void setup() {
 
 
   drawLines(0, 300, false, false);
-  // drawLines(300, 600, true, false);
-  // drawLines(600, 900, true, true);
+  drawLines(320, 600, true, false);
+  drawLines(600, 900, true, true);
 
   noLoop();
 }
 
-void drawLine(int startY, int endY, boolean second, boolean third) {
+void drawLines(int startY, int endY, boolean second, boolean third) {
   for (int i = 0; i <= 900; i += step) {
     for (int j = startY; j < endY; j += step) {
       PVector a, b;
@@ -28,7 +28,15 @@ void drawLine(int startY, int endY, boolean second, boolean third) {
       translate((a.x + b.x) * 0.5, (a.y + b.y) * 0.5);
       rotate(radians(random(360)));
       translate(-(a.x + b.x) * 0.5, -(a.y + b.y) * 0.5);
-      line(a.x, a.y, b.x, b.y);
+      if (!second && !third) line(a.x, a.y, b.x, b.y);
+      else if (second && ! third) {
+        line(a.x-10, a.y, b.x-10, b.y);
+        line(a.x+10, a.y, b.x+10, b.y);
+      } else {
+        line(a.x, a.y, b.x, b.y);
+        line(a.x-13, a.y, b.x-13, b.y);
+        line(a.x+13, a.y, b.x+13, b.y);
+      }
       popMatrix();
     }
   }
