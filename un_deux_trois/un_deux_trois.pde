@@ -1,25 +1,28 @@
+// https://generativeartistry.com/tutorials/un-deux-trois/
 int step = 40;
 
-//which consists in a grid of randomly rotated lines where the number of rotated lines increases as the y-axis position increases.
 void setup() {
   size(900, 900);
 
-  background(255);
-  stroke(0);
+  colorMode(HSB, 360, 100, 100);
+  background(360);
   strokeWeight(5);
   noFill();
-
 
   drawLines(0, 300, false, false);
   drawLines(320, 600, true, false);
   drawLines(600, 900, true, true);
-
-  noLoop();
 }
 
 void drawLines(int startY, int endY, boolean second, boolean third) {
   for (int i = 0; i <= 900; i += step) {
     for (int j = startY; j < endY; j += step) {
+
+      float h = map(j, 0, 900, 330, 10);
+      float s = random(10, 90);
+      float br = random(10, 90);
+      stroke(h, s, br);
+
       PVector a, b;
       a = new PVector(i + step / 2, j);
       b = new PVector(i + step / 2, j + step);
