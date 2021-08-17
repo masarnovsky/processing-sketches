@@ -1,7 +1,11 @@
+import java.util.Set;
+import java.util.HashSet;
+
 int cellCount = 7;
 int cellSize = 70;
-int pointSize = cellSize;
-int pointCount = (cellCount * cellCount) / 3;
+int pointSize = cellSize-1;
+// int pointCount = (cellCount * cellCount) / 3;
+int pointCount = 9;
 int size = 800;
 color[] colors;
 color backgroundColor;
@@ -12,9 +16,14 @@ void setup() {
   size(800, 800);
   setupColorPalette();
 
+  noLoop();
+}
+
+void createImage() {
   pushMatrix();
   createBackgroundCells();
   createPoints();
+  createLines();
   popMatrix();
 }
 
@@ -49,6 +58,38 @@ void createPoints() {
     }
 }
 
+void createLines() {
+  strokeWeight(2);
+  stroke(0);
+
+  Set<Line> lines = new HashSet();
+  for (int i = 0; i < points.size(); i++) {
+    float minDist = size * size;
+    Line shortestLine = null;
+    for (int j = 0; j < points.size(); j++) {
+      if (i != j) {
+        PVector a = points.get(i);
+        PVector b = points.get(j);
+        float dist = dist(a.x, a.y, b.x, b.y);
+        if (dist < minDist) {
+          shortestLine = new Line();
+          shortestLine.a = a;
+          shortestLine.b = b;
+
+          if (!lines.contains(shortestLine)) {
+            lines.add(shortestLine);
+            minDist = dist;
+          }
+        }
+      }
+    }
+  }
+
+  for (Line line: lines) {
+    line(line.a.x, line.a.y, line.b.x, line.b.y);
+  }
+}
+
 void trimPointsList() {
   while(points.size() >= pointCount) {
     removeRandomPoint();
@@ -79,4 +120,16 @@ color getRandomColor() {
   return colors[int(random(colors.length))];
 }
 
-void display() {}
+void draw() {
+  createImage();
+}
+
+void keyPressed() {
+ if (key == 'r') {
+   redraw();
+ }
+
+ if (key == 's') {
+   saveFrame("dots-on-the-cells-" + int(random(100000)) + ".png");
+ }
+}
