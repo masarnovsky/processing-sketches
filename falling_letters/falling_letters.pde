@@ -2,10 +2,13 @@ PFont f;
 ArrayList<Key> keys;
 int fontSize = 300;
 
+int framesToSave = 200;
+boolean recording = false;
+
 
 void setup() {
+  frameRate(30);
   fullScreen(1);
-  //size(800, 800);
   f=createFont("Comic Sans MS", fontSize, true);
   textFont(f);
   keys = new ArrayList();
@@ -18,20 +21,28 @@ void draw() {
     k.fall();
   }
 
+  saveFrames();
+
   clearFallenKeys();
 }
 
 void clearFallenKeys() {
-  for (int i = keys.size() -1; i >= 0 ; i-- ) {
+  for (int i = keys.size() - 1; i >= 0 ; i--) {
     if (keys.get(i).isFallen()) {
       keys.remove(i);
     }
   }
 }
 
+void saveFrames() {
+  if (recording && (framesToSave-- > 0)) {
+    saveFrame("out/###.png");
+  }
+}
+
 void keyPressed() {
   if (key == 's') {
-    saveFrame("falling_letters-######.png");
+    recording = true;
   }
   keys.add(new Key());
 }
