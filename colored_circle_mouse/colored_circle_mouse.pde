@@ -2,6 +2,8 @@ int h,s,b,a;
 int r = 15;
 int mX = -1, mY = -1;
 
+int framesToSave = 360;
+
 void setup() {
   size(600,600);
   background(0);
@@ -19,6 +21,14 @@ void draw() {
   changeRadius();
   mX = mouseX;
   mY = mouseY;
+
+  saveFrames();
+}
+
+void saveFrames() {
+  if (framesToSave-- > 0) {
+    saveFrame("out/###.png");
+  }
 }
 
 void changeRadius() {

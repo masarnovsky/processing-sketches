@@ -3,6 +3,9 @@ int vel = 4;
 int d = 55;
 int ballsCount = 10;
 
+int framesToSave = 200;
+boolean recording = false;
+
 void setup() {
   size(800,800);
   colorMode(HSB, 360, 100, 100);
@@ -38,6 +41,14 @@ void draw() {
     Ball ball = balls.get(k);
     ball.update();
     ball.draw();
+  }
+
+  // saveFrames();
+}
+
+void saveFrames() {
+  if (framesToSave-- > 0) {
+    saveFrame("out/###.png");
   }
 }
 
@@ -99,7 +110,7 @@ class Ball {
 
 void keyPressed() {
   if (key == 's') {
-    saveFrame("bubbles-######.png");
+    recording = true;
   }
 
   if (key == 'r') {

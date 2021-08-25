@@ -8,6 +8,8 @@ float delta = 0.3;
 int arcsCount = 20;
 Arc[] arcs;
 
+int framesToSave = 200;
+
 void setup() {
   size(800, 800);
   colorMode(HSB, 360, 100, 100);
@@ -33,14 +35,19 @@ void draw() {
   for (int i = 0; i < arcs.length; i++) {
     arcs[i].draw();
   }
+
+  saveFrames();
+}
+
+void saveFrames() {
+  if (framesToSave-- > 0) {
+    saveFrame("out/###.png");
+  }
 }
 
 void keyPressed() {
   if (key == 'r') {
     generateArcs();
-  }
-  if (key == 's') {
-    saveFrame("colored-arcs-######.png");
   }
 }
 
