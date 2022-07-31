@@ -5,7 +5,7 @@
 float a = 180;
 float a2 = 0;
 float delta = 0.3;
-int arcsCount = 20;
+int arcsCount = 17;
 Arc[] arcs;
 
 int framesToSave = 200;
@@ -24,19 +24,23 @@ void setup() {
 void generateArcs() {
   color[] colors = getColorPalette();
 
-  for (int i = 0, j = 150; i < arcsCount; i++, j += 20) {
-    arcs[i] = new Arc(j, colors[int(random(colors.length))]);
+  for (int i = 0, currentRadius = 150, prevStrokeWeight = 0; i < arcsCount; i++) {
+    int newStrokeWeight = int(random(5, 20));
+    int newRadius = currentRadius + newStrokeWeight + prevStrokeWeight;
+    arcs[i] = new Arc(newRadius, colors[int(random(colors.length))], newStrokeWeight);
+
+    currentRadius = newRadius;
+    prevStrokeWeight = newStrokeWeight;
   }
 }
 
 void draw() {
   background(0);
-  strokeWeight(8);
   for (int i = 0; i < arcs.length; i++) {
-    arcs[i].draw();
+    arcs[i].drawFigure();
   }
 
-  saveFrames();
+  // saveFrames();
 }
 
 void saveFrames() {
