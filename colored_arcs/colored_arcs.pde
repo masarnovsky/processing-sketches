@@ -57,7 +57,7 @@ void keyPressed() {
 
 color[] getColorPalette() {
   color c1, c2, c3, c4, c5;
-  int rand = int(random(3));
+  int rand = int(random(4));
 
   if (rand == 0) {
     c1 = color(214, 99, 37);
@@ -71,12 +71,18 @@ color[] getColorPalette() {
     c3 = color(39, 74, 100);
     c4 = color(338, 92, 85);
     c5 = color(335, 69, 56);
-  } else {
+  } else if (rand == 2) {
     c1 = color(63, 18, 85);
     c2 = color(208, 36, 81);
     c3 = color(272, 22, 57);
     c4 = color(339, 77, 49);
     c5 = color(27, 100, 32);
+  } else {
+    c1 = color(323, 78, 70);
+    c2 = color(52, 90, 100);
+    c3 = color(323, 100, 100);
+    c4 = color(184, 90, 80);
+    c5 = color(184, 95, 70);
   }
 
   color[] colors = {c1, c2, c3, c4, c5};
