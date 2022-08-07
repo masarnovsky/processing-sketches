@@ -1,7 +1,6 @@
 class Arc {
   int radius;
   color clr;
-
   float start;
   float end;
   float delta;
@@ -18,13 +17,10 @@ class Arc {
 
   private void setUpDirection() {
     delta = random(0.1, 0.8);
-
     float val1 = random(0, 320);
     float val2 = random(val1 + 20, 360);
     start = val1;
     end = val2;
-
-
     Direction direction = randomDirection();
 
     switch(direction) {
@@ -66,13 +62,13 @@ class Arc {
 
     if (reversed) {
       arc(width/2, height/2, radius, radius, radians(current), radians(start));
-      if (current > start || current < end) {
+      if (current - (2 * delta) > start || current < end) {
         delta *= -1;
       }
       current -= delta;
     } else {
       arc(width/2, height/2, radius, radius, radians(start), radians(current));
-      if (current < start || current > end) {
+      if (current + (2 * delta) < start || current > end) {
         delta *= -1;
       }
       current += delta;

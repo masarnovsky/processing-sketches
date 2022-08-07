@@ -1,9 +1,11 @@
 # Projects
 
 ## Colored arcs
-![Colored arc 1](colored_arcs/out/out.gif)
-![Colored arc 2](colored_arcs/out/out1.gif)
-![Colored arc 3](colored_arcs/out/out2.gif)
+![Colored arc 1. Old version](colored_arcs/out/out.gif)
+![Colored arc 2. Old version](colored_arcs/out/out1.gif)
+![Colored arc 3. Old version](colored_arcs/out/out2.gif)
+![Colored arc 4](colored_arcs/out/out3.gif)
+![Colored arc 5](colored_arcs/out/out4.gif)
 
 ## Colored circles
 faster you move - the bigger circle

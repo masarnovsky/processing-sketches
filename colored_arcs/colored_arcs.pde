@@ -8,7 +8,7 @@ float delta = 0.3;
 int arcsCount = 17;
 Arc[] arcs;
 
-int framesToSave = 200;
+int framesToSave = 400;
 
 void setup() {
   size(800, 800);
@@ -28,7 +28,6 @@ void generateArcs() {
     int newStrokeWeight = int(random(5, 20));
     int newRadius = currentRadius + newStrokeWeight + prevStrokeWeight;
     arcs[i] = new Arc(newRadius, colors[int(random(colors.length))], newStrokeWeight);
-
     currentRadius = newRadius;
     prevStrokeWeight = newStrokeWeight;
   }
