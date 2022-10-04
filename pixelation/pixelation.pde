@@ -1,37 +1,48 @@
-String source = "../sources/mona_3.jpg";
-int d = 4;
+String source = "../sources/signac.jpg";
+int pixel = 4;
+
+PImage img = null;
 
 void setup() {
-  size(1600, 800);
-  PImage mona = loadImage(source);
-  image(mona, 0, 0);
+  size(100, 100);
+  img = loadImage(source);
 
-  mona.loadPixels();
-  for (int y = 0; y < mona.height - d; y += d) {
-    for (int x = 0; x < mona.width - d; x += d) {
-        int x1 = x + y * mona.width; // first row
-        int x2 = x + ((y+1) * mona.width); // second row
-        int x3 = x + ((y+2) * mona.width); // third row
-        int x4 = x + ((y+3) * mona.width); // fourth row
+  surface.setResizable(true);
+  surface.setSize(img.width * 2, img.height);
+  surface.setLocation(50,50);
+}
 
-        color firstRowColor = calculateAvgForRow(mona.pixels, x1);
-        color secondRowColor = calculateAvgForRow(mona.pixels, x2);
-        color thirdRowColor = calculateAvgForRow(mona.pixels, x3);
-        color fourthRowColor = calculateAvgForRow(mona.pixels, x4);
+void draw() {
+  image(img, 0, 0);
+
+  img.loadPixels();
+  for (int y = 0; y < img.height - pixel; y += pixel) {
+    for (int x = 0; x < img.width - pixel; x += pixel) {
+        int x1 = x + y * img.width; // first row
+        int x2 = x + ((y+1) * img.width); // second row
+        int x3 = x + ((y+2) * img.width); // third row
+        int x4 = x + ((y+3) * img.width); // fourth row
+
+        color firstRowColor = calculateAvgForRow(img.pixels, x1);
+        color secondRowColor = calculateAvgForRow(img.pixels, x2);
+        color thirdRowColor = calculateAvgForRow(img.pixels, x3);
+        color fourthRowColor = calculateAvgForRow(img.pixels, x4);
 
         float r = calculateAvg(red(firstRowColor), red(secondRowColor), red(thirdRowColor), red(fourthRowColor));
         float g = calculateAvg(green(firstRowColor), green(secondRowColor), green(thirdRowColor), green(fourthRowColor));
         float b = calculateAvg(blue(firstRowColor), blue(secondRowColor), blue(thirdRowColor), blue(fourthRowColor));
         color col = color(r,g,b);
 
-        setUpColorForPixels(mona.pixels, x1, col);
-        setUpColorForPixels(mona.pixels, x2, col);
-        setUpColorForPixels(mona.pixels, x3, col);
-        setUpColorForPixels(mona.pixels, x4, col);
+        setUpColorForPixels(img.pixels, x1, col);
+        setUpColorForPixels(img.pixels, x2, col);
+        setUpColorForPixels(img.pixels, x3, col);
+        setUpColorForPixels(img.pixels, x4, col);
     }
   }
-  mona.updatePixels();
-  image(mona, 800, 0);
+  img.updatePixels();
+  image(img, img.width, 0);
+
+  noLoop();
 }
 
 void setUpColorForPixels(color[] pix, int ind, color c) {
