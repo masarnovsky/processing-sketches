@@ -5,7 +5,7 @@ int mX = -1, mY = -1;
 int framesToSave = 360;
 
 void setup() {
-  size(600,600);
+  size(800,800);
   background(0);
   colorMode(HSB, 360, 100, 100, 100);
   noStroke();
