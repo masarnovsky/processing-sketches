@@ -1,5 +1,5 @@
 String source = "../sources/unknown_pleasures.jpg";
-int pixelSize = 6;
+int pixelSize = 16;
 PImage img = null;
 
 void setup() {
@@ -70,5 +70,11 @@ color createCommonColor(float r, float g, float b) {
 void setupPixelColor(color[] pixels, int ind, color col) {
   for (int i = 0; i < pixelSize; i++) {
     pixels[ind + i] = col;
+  }
+}
+
+void keyPressed() {
+  if (key == 's') {
+    saveFrame("frames/pixelation-" + int(random(500)) + ".png");
   }
 }
