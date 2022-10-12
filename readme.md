@@ -22,3 +22,10 @@ faster you move - the bigger circle
 
 ## Colored circles
 ![colored circle](colored_circle/colored_circle-006650.png)
+
+## Partial pixel sorting
+![partial pixel sorting](partial_pixel_sorting/frames/partial-pixel-sorting-312.png)
+
+## Image pixelation
+![image pixelation p=6](pixelation/frames/pixelation-316.png)
+![image pixelation p=16](pixelation/frames/pixelation-324.png)
