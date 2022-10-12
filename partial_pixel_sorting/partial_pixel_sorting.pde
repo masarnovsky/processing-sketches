@@ -80,6 +80,6 @@ int partition(color colors[], int begin, int end) {
 
 void keyPressed() {
   if (key == 's') {
-    saveFrame("frames/partial-pixel-sorting-" + int(random(500)) + ".png");
+    saveFrame("result/partial-pixel-sorting-" + int(random(500)) + ".png");
   }
 }

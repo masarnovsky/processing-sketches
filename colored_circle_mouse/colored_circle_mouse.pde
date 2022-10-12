@@ -27,7 +27,7 @@ void draw() {
 
 void saveFrames() {
   if (framesToSave-- > 0) {
-    saveFrame("out/###.png");
+    saveFrame("frames/###.png");
   }
 }
 

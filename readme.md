@@ -9,7 +9,7 @@
 
 ## Colored circles
 faster you move - the bigger circle
-![Colored circles](colored_circle_mouse/out/out.gif)
+![Colored circles](colored_circle_mouse/result/result.gif)
 
 ## Bubbles collision
 ![bubbles collision](bubbles_collision/out/out.gif)
@@ -24,8 +24,8 @@ faster you move - the bigger circle
 ![colored circle](colored_circle/colored_circle-006650.png)
 
 ## Partial pixel sorting
-![partial pixel sorting](partial_pixel_sorting/frames/partial-pixel-sorting-312.png)
+![partial pixel sorting](partial_pixel_sorting/result/partial-pixel-sorting-312.png)
 
 ## Image pixelation
-![image pixelation p=6](pixelation/frames/pixelation-316.png)
-![image pixelation p=16](pixelation/frames/pixelation-324.png)
+![image pixelation p=6](pixelation/result/pixelation-316.png)
+![image pixelation p=16](pixelation/result/pixelation-324.png)
