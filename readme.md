@@ -27,5 +27,9 @@ faster you move - the bigger circle
 ![partial pixel sorting](partial_pixel_sorting/result/partial-pixel-sorting-312.png)
 
 ## Image pixelation
-![image pixelation p=6](pixelation/result/pixelation-316.png)
-![image pixelation p=16](pixelation/result/pixelation-324.png)
+![image pixelation p=16](pixelation/result/pixelation-316.png)
+![image pixelation p=6](pixelation/result/pixelation-324.png)
+
+## Partial image pixelation
+![partial image pixelation. single mode](partial_pixelation/result/single_mode.gif)
+![partial image pixelation. endless mode](partial_pixelation/result/endless_mode.gif)
