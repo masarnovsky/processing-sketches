@@ -1,9 +1,6 @@
 String source = "../sources/mona.jpg";
 PImage img = null;
-int min = 15;
-int max = 0;
-int middle = 0;
-int current = 0;
+int length = 100;
 
 void setup() {
   size(100, 100);
@@ -12,40 +9,57 @@ void setup() {
   surface.setResizable(true);
   surface.setSize(img.width, img.height);
   surface.setLocation(50,50);
-
-  middle = img.height/2;
-  max = middle - min;
 }
 
 void draw() {
   img = loadImage(source);
   img.loadPixels();
 
-  for (int x = 0; x < img.width; x++) {
-    current = int(random(min, max));
-    int from = middle - current;
-    int to = middle + current;
-
-    color[] colors = new color[current*2];
-    for (int y = from, i = 0; y < to; y++, i++) {
-      int ind = x + (y * img.width);
-      colors[i] = img.pixels[ind];
+  for (int x = 0; x <= img.width - length; x+=length) {
+    for (int y = 0; y <= img.height - length; y+=length) {
+      sortInArea(x, x + length, y, y + length);
     }
-
-    sortColors(colors);
-
-    updateYPixels(colors, x, from, to);
   }
 
   img.updatePixels();
   image(img, 0, 0);
   noLoop();
+  println("end");
 }
 
-void updateYPixels(color[] sortedYColors, int x, int from, int to) {
-  for (int y = from, i = 0; y < to; y++, i++) {
+void sortInArea(int xStart, int xEnd, int yStart, int yEnd) {
+  if (isSortByXAxis()) {
+    sortXInArea(xStart, xEnd, yStart, yEnd);
+  } else {
+    sortYInArea(xStart, xEnd, yStart, yEnd);
+  }
+}
+
+void sortXInArea(int xStart, int xEnd, int yStart, int yEnd) {
+}
+
+void sortYInArea(int xStart, int xEnd, int yStart, int yEnd) {
+  for (int x = xStart; x < xEnd; x++) {
+    color[] colors = new color[yEnd-yStart];
+    for (int y = yStart, indNew = 0; y < yEnd; y++, indNew++) {
+      int indPix = x + (y * img.width);
+      colors[indNew] = img.pixels[indPix];
+    }
+    sortColors(colors);
+    updateYPixels(colors, x, yStart, yEnd);
+  }
+}
+
+void updateYPixels(color[] sortedYColors, int x, int yStart, int yEnd) {
+  for (int y = yStart, i = 0; y < yEnd; y++, i++) {
     int ind = x + (y * img.width);
     img.pixels[ind] = sortedYColors[i];
+  }
+}
+
+void updateXPixels(color[] sortedYColors, int y, int xStart, int xEnd) {
+  for (int x = xStart, i = 0; x < xEnd; x++, i++) {
+    img.pixels[y] = sortedYColors[i];
   }
 }
 
@@ -83,9 +97,13 @@ int partition(color colors[], int begin, int end) {
     return i+1;
 }
 
+boolean isSortByXAxis() {
+  return random(1) < 0.5;
+}
+
 void keyPressed() {
   if (key == 's') {
-    saveFrame("result/partial-pixel-sorting-" + int(random(500)) + ".png");
+    saveFrame("result/partial-pixel-sorting-v2-" + int(random(500)) + ".png");
   }
   if (key == 'r') {
     loop();
