@@ -33,7 +33,6 @@ void draw() {
     }
 
     sortColors(colors);
-
     updateYPixels(colors, x, from, to);
   }
 

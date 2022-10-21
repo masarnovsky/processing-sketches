@@ -1,6 +1,6 @@
 String source = "../sources/mona.jpg";
 PImage img = null;
-int length = 100;
+int length = 200;
 
 void setup() {
   size(100, 100);
@@ -29,16 +29,25 @@ void draw() {
 
 void sortInArea(int xStart, int xEnd, int yStart, int yEnd) {
   if (isSortByXAxis()) {
-    sortXInArea(xStart, xEnd, yStart, yEnd);
+    sortByXInArea(xStart, xEnd, yStart, yEnd);
   } else {
-    sortYInArea(xStart, xEnd, yStart, yEnd);
+    sortByYInArea(xStart, xEnd, yStart, yEnd);
   }
 }
 
-void sortXInArea(int xStart, int xEnd, int yStart, int yEnd) {
+void sortByXInArea(int xStart, int xEnd, int yStart, int yEnd) {
+  for (int y = yStart; y < yEnd; y++) {
+    color[] colors = new color[xEnd-xStart];
+    for (int x = xStart, indNew = 0; x < xEnd; x++, indNew++) {
+      int indPix = x + (y * img.width);
+      colors[indNew] = img.pixels[indPix];
+    }
+    sortColors(colors);
+    updateXPixels(colors, y, xStart, xEnd);
+  }
 }
 
-void sortYInArea(int xStart, int xEnd, int yStart, int yEnd) {
+void sortByYInArea(int xStart, int xEnd, int yStart, int yEnd) {
   for (int x = xStart; x < xEnd; x++) {
     color[] colors = new color[yEnd-yStart];
     for (int y = yStart, indNew = 0; y < yEnd; y++, indNew++) {
@@ -59,7 +68,8 @@ void updateYPixels(color[] sortedYColors, int x, int yStart, int yEnd) {
 
 void updateXPixels(color[] sortedYColors, int y, int xStart, int xEnd) {
   for (int x = xStart, i = 0; x < xEnd; x++, i++) {
-    img.pixels[y] = sortedYColors[i];
+    int ind = x + (y * img.width);
+    img.pixels[ind] = sortedYColors[i];
   }
 }
 
